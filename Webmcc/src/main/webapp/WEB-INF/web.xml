@@ -1,0 +1,17 @@
+<web-app>
+  <display-name>Webifycator</display-name>
+    <error-page>
+        <location>/error.jsp</location>
+    </error-page>
+    <listener>
+        <listener-class>com.licenta.filters.ServletContext</listener-class>
+    </listener>
+    <filter>
+        <filter-name>loginfilter</filter-name>
+        <filter-class>com.licenta.filters.CheckLoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginfilter</filter-name>
+        <url-pattern>/protected/*</url-pattern>
+    </filter-mapping>
+</web-app>

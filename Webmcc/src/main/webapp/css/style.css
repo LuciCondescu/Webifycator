@@ -1,0 +1,28 @@
+
+.btn-file{
+    position:absolute;
+    z-index:2;
+    top:0;
+    left:0;
+    filter: alpha(opacity=0);
+    opacity:0;
+    background-color:red;
+    color:transparent;
+}
+
+.noRecord {
+    text-align: center;
+    font-size: large;
+}
+
+.cancelButton {
+    font-size: 10px;
+    line-height: 6px;
+    width: 20px;
+    height : 20px;
+    margin-left:-15px;
+}
+
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }

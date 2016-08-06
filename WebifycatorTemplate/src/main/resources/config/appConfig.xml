@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+    <entry key="APPLICATION_NAME"></entry>
+    <entry key="SSO_PROVIDERS">facebook,google</entry>
+    <entry key="FACTORY"></entry>
+    <entry key="MAX_COMMANDS"></entry>
+    <entry key="EXECUTION_STRATEGY"></entry> <!--QUEUE or REFUSE-->
+    <entry key="SMTP_HOST"></entry>
+    <entry key="SMTP_PORT"></entry>
+    <entry key="MAIL_USERNAME"></entry>
+    <entry key="MAIL_PASSWORD"></entry>
+    <entry key="OVERVIEW"></entry>
+</properties>

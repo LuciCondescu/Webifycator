@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+    <entry key="APPLICATION_NAME">Webified MCC 1.5</entry>
+    <entry key="SSO_PROVIDERS">facebook,google</entry>
+    <entry key="FACTORY">com.licenta.demo.PageFactory</entry>
+    <entry key="MAX_COMMANDS">5</entry>
+    <entry key="EXECUTION_STRATEGY">REFUSE</entry> <!--QUEUE or REFUSE-->
+    <entry key="MAX_USER_COMMANDS">2</entry>
+    <entry key="SMTP_HOST">smtp.mail.yahoo.com</entry>
+    <entry key="SMTP_PORT">587</entry>
+    <entry key="MAIL_USERNAME">webmcc.noreply@yahoo.com</entry>
+    <entry key="MAIL_PASSWORD"></entry>
+    <entry key="OVERVIEW">&lt;div&gt;
+        &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h1&gt;Model Capture for C++&lt;/h1&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;lead&quot;&gt;This reverse engineering tool extracts design information from C++ source code producing a set of text tables containing design facts. Next, the information from these tables can be used by other tools (e.g., &lt;a href=&quot;http://loose.upt.ro/reengineering/research/iplasma&quot;&gt;iPlasma&lt;/a&gt;, &lt;a href=&quot;http://moosetechnology.org/&quot;&gt;MOOSE&lt;/a&gt;) to perform higher-level analysis for the investigated C++ code such as design metrics, design flaw detection, etc.
+        More details about this program can be found &lt;a href=&quot;http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=4438085&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+        &lt;/div&gt;</entry>
+</properties>

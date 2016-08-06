@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/" crossContext="true" reloadable="true">
+
+    <Resource name="jdbc/webtask" auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/WebifycatorTemplate"
+              username="username"
+              password="password"
+              initialSize="10"
+              maxActive="30"
+              maxIdle="10"
+              minIdle="5"
+              timeBetweenEvictionRunsMillis="34000"
+              minEvictableIdleTimeMillis="55000"
+              validationQuery="SELECT 1"
+              validationInterval="34000"
+              testOnBorrow="true"
+              removeAbandoned="true"
+              removeAbandonedTimeout="55"
+              logAbandoned="true"
+    />
+
+</Context>

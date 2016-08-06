@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/Webmcc" crossContext="true" reloadable="true">
+
+    <Resource name="jdbc/webtask" auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/Webmcc"
+              username=""
+              password=""
+              maxActive="30"
+              maxIdle="20"
+              minIdle="5"
+              logAbandoned="true"
+              initialSize="15"
+              timeBetweenEvictionRunsMillis="34000"
+              minEvictableIdleTimeMillis="55000"
+              validationQuery="SELECT 1"
+              validationInterval="34000"
+              testOnBorrow="true"
+              removeAbandoned="true"
+              removeAbandonedTimeout="55"
+    />
+
+</Context>
