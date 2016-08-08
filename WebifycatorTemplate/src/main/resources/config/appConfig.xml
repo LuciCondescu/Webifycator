@@ -6,6 +6,7 @@
     <entry key="SSO_PROVIDERS">facebook,google</entry>
     <entry key="FACTORY"></entry>
     <entry key="MAX_COMMANDS"></entry>
+    <entry key="MAX_USER_COMMANDS"></entry>
     <entry key="EXECUTION_STRATEGY"></entry> <!--QUEUE or REFUSE-->
     <entry key="SMTP_HOST"></entry>
     <entry key="SMTP_PORT"></entry>
