@@ -10,9 +10,9 @@ any type of command line application (written in any programming language) to a 
 1. Download the **WebifycatorTemplate** folder content and import it as a **maven** project in any IDE.
 
 2. Create the class that represents the UI for the command. This class must extend **LaunchCommandPageUI**. The only methods which 
-must be overridden are **doClone()** (returns a similar object with the current one) and **buildPageUI()** (which will be the interface
-for out command). Basically we must create **WebElement** objects and add those to the command UI. Also, we can specify for 
-every **WebElement**, a **Verifier** which validated the input/selection of the end user. Example:
+must be overridden are ```doClone()``` (returns a similar object with the current one) and ```buildPageUI()``` (which will be the interface
+for out command). Basically we must create ```WebElement``` objects and add those to the command UI. Also, we can specify for 
+every ```WebElement```, a ```Verifier``` which validated the input/selection of the end user. Example:
   ```
     public void buildPageUI() {
             Verifier verifier = new Verifier() {
@@ -27,9 +27,7 @@ every **WebElement**, a **Verifier** which validated the input/selection of the 
             super.addWebElement(inputText);
     }
   ```
-3. Create a class which specifies how the command is build. Here we must extend **CommandLaunch**. We have also 2 methods to implement:
-**doClone()** and **buildCommand()**. You can see a dummy example for a "ls" command webifycation. ParametersMap is a map which
-contains as keys the **WebElements** names, and as values the actual input inserted/selected by the end user. Example:
+3. Create a class which specifies how the command is build. Here we must extend ```CommandLaunch```. We have also 2 methods to implement: ```doClone()``` and ```buildCommand()```. You can see a dummy example for a "ls" command webifycation. ParametersMap is a map which contains as keys the ```WebElements``` names, and as values the actual input inserted/selected by the end user. Example:
   
   ```
     public String buildCommand(Map<String, String> parametersMap,String workingDirectory) {
@@ -37,8 +35,8 @@ contains as keys the **WebElements** names, and as values the actual input inser
             return "ls " + fileName;
     }
   ```
-4. Create a class which specifies how the command results are parsed. This class must extend **CommandParser**. Similar with steps 2 and 3,
-we must override 2 methods : **doClone()** and **parseCommandResult()**. The following example shows how this method could be overridden.
+4. Create a class which specifies how the command results are parsed. This class must extend ```CommandParser```. Similar with steps 2 and 3,
+we must override 2 methods : **doClone()** and ```parseCommandResult()```. The following example shows how this method could be overridden.
 The framework user must parse the command results here and then return a StringBuilder object containing the command results, which will be
 saved in database.
 
@@ -48,7 +46,7 @@ saved in database.
     }
   ```
 
-5. Create a class which will inject all the object created at previous steps. This class must extend **CommandPageFactory**. Example:
+5. Create a class which will inject all the object created at previous steps. This class must extend ```CommandPageFactory```. Example:
 
   ```
     protected void setupPages() {
@@ -95,7 +93,9 @@ server and it contains details regarding database connection.
 
 7. The last step is to build our project and launch it in the Tomcat application server. In order to do that, we must first execute the command
 
-  ```mvn package```
+  ```
+  mvn package
+  ```
 
 in the WebifycatorTemplate directory. It will produce in the result folder, a folder named exactly the same, WebifycatorTemplate. This one must be copied
 int the Tomcat applications directory, and Tomcat should be restarted.
