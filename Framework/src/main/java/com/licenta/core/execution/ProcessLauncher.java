@@ -7,12 +7,12 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-public abstract class RuntimeLauncher {
+public abstract class ProcessLauncher {
 
     private Process process;
 
     public Process execCommand(String command, String workingDirectory, CommandBean commandBean) throws InterruptedException {
-        String [] commandArray = this.getCommandLineStrings(command);
+        String [] commandArray = this.getCommandLineString(command);
         try {
             ProcessBuilder builder = new ProcessBuilder(commandArray);
             builder.directory(new File(workingDirectory));
@@ -35,12 +35,11 @@ public abstract class RuntimeLauncher {
         return process;
     }
 
-    protected abstract String[] getCommandLineStrings(String command);
+    protected abstract String[] getCommandLineString(String command);
 
     public void killProcess() {
         if (process != null) {
             process.destroy();
-            process = null;
         }
     }
 }

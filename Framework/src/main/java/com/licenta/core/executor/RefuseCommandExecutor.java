@@ -4,6 +4,8 @@ package com.licenta.core.executor;
  * @author Lucian CONDESCU
  */
 public class RefuseCommandExecutor extends QueuedCommandExecutor {
+    private static final String MAX_GLOBAL_COMMAND_INSTANCES = "The maximum number of simultaneous commands was reached. Please try again later.";
+    private static final String MAX_USER_COMMAND_INSTANCES = "The maximum number of simultaneous commands per user was reached. Please try again later.";
     private int maxUserCommands;
 
     public RefuseCommandExecutor(int threadsNumber, int maxUserCommands) {
@@ -14,9 +16,9 @@ public class RefuseCommandExecutor extends QueuedCommandExecutor {
     @Override
     public String submitCommand(RunnableCommandLaunch command, String id) {
         if(this.getNumberOfRunningCommands(id) < maxUserCommands)
-            if(this.threadNumber > this.commandsMap.size())
+            if(this.numberOfThreads > this.commandsMap.size())
                 return super.submitCommand(command, id);
-            else return "The maximum number of simultaneous commands was reached. Please try again later.";
-        else return "You have reached the maximum number of simultaneous commands. Please try again later.";
+            else return MAX_GLOBAL_COMMAND_INSTANCES;
+        else return MAX_USER_COMMAND_INSTANCES;
     }
 }

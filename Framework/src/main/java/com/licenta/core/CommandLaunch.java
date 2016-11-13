@@ -1,7 +1,7 @@
 package com.licenta.core;
 
-import com.licenta.core.execution.RuntimeLauncher;
-import com.licenta.core.execution.RuntimeLauncherFactory;
+import com.licenta.core.execution.ProcessLauncher;
+import com.licenta.core.execution.ProcessLauncherFactory;
 import com.licenta.dao.CommandDAO;
 import com.licenta.dao.beans.CommandBean;
 import com.licenta.dao.beans.UserBean;
@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Lucian CONDESCU
  */
 public abstract class CommandLaunch {
-    private final RuntimeLauncher runtimeLauncher = RuntimeLauncherFactory.getLauncher();
+    private final ProcessLauncher processLauncher = ProcessLauncherFactory.getLauncher();
     protected CommandParser parser;
     private CommandDAO commandDAO = new JDBCCommandDAOImpl();
 
@@ -30,7 +30,7 @@ public abstract class CommandLaunch {
         Process launchedProcess;
         StringBuilder commandResult = new StringBuilder("Command exited abnormally.");
         try {
-            launchedProcess = runtimeLauncher.execCommand(command,workingDirectory,commandBean);
+            launchedProcess = processLauncher.execCommand(command,workingDirectory,commandBean);
             if(commandBean.getErrorCode()==0)
                 commandResult = parser.parseCommandResult(launchedProcess,workingDirectory,user,parametersMap);
                 System.out.println("commandResult = [" + commandResult + "]");
@@ -53,7 +53,7 @@ public abstract class CommandLaunch {
     protected abstract String buildCommand(Map<String, String> parametersMap, String workingDirectory);
 
     public void cancel() {
-        runtimeLauncher.killProcess();
+        processLauncher.killProcess();
     }
 
     public abstract CommandLaunch doClone();

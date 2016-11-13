@@ -3,9 +3,9 @@ package com.licenta.core.execution;
 /**
  * @author Lucian CONDESCU
  */
-public class WindowsRuntimeLauncher extends RuntimeLauncher {
+public class WindowsProcessLauncher extends ProcessLauncher {
 
-    protected String[] getCommandLineStrings(String command) {
+    protected String[] getCommandLineString(String command) {
         return new String[]{"cmd.exe", "/c", command};
     }
 }

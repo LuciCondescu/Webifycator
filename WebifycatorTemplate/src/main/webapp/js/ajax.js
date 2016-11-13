@@ -52,7 +52,7 @@ function cancelExecution(id,token) {
 
 function getRunningCommands() {
     $.get( "runningCommands.jsp", function( data ) {
-        $("#liveCommands").html(data);
+        $('#liveCommands').html(data);
     });
 
     setTimeout(getRunningCommands,5000);
