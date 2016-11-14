@@ -76,7 +76,7 @@ public abstract class LaunchCommandPageUI {
     }
 
     public void cancel() {
-        this.commandLaunch.cancel();
+        this.commandLaunch.cancelLaunchedCommand();
     }
 
     public abstract LaunchCommandPageUI doClone();

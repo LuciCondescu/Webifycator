@@ -6,7 +6,9 @@ import com.licenta.dao.CommandDAO;
 import com.licenta.dao.beans.CommandBean;
 import com.licenta.dao.beans.UserBean;
 import com.licenta.dao.impl.JDBCCommandDAOImpl;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Map;
@@ -17,7 +19,7 @@ import java.util.Map;
 public abstract class CommandLaunch {
     private final ProcessLauncher processLauncher = ProcessLauncherFactory.getLauncher();
     protected CommandParser parser;
-    private CommandDAO commandDAO = new JDBCCommandDAOImpl();
+    private final CommandDAO commandDAO = new JDBCCommandDAOImpl();
 
     public CommandLaunch(CommandParser parser) {
         this.parser = parser.doClone();
@@ -37,8 +39,6 @@ public abstract class CommandLaunch {
         } catch (InterruptedException e) {
             commandResult = new StringBuilder("Command was canceled.");
         } finally {
-            //File workingDir = new File(workingDirectory);
-            //FileUtils.deleteQuietly(workingDir);
             commandBean.setCommandName(commandName);
             commandBean.setLaunchedCommand(commandResult.toString());
             commandBean.setTimestamp(timestamp);
@@ -47,12 +47,15 @@ public abstract class CommandLaunch {
             commandBean.setResult(commandResult.toString());
 
             commandDAO.addCommand(commandBean);
+            File workingDir = new File(workingDirectory);
+            FileUtils.deleteQuietly(workingDir);
+
         }
     }
 
     protected abstract String buildCommand(Map<String, String> parametersMap, String workingDirectory);
 
-    public void cancel() {
+    public void cancelLaunchedCommand() {
         processLauncher.killProcess();
     }
 

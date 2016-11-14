@@ -6,7 +6,8 @@ import org.scribe.model.OAuthRequest;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
-/**
+/** This provider is not used because Yahoo does not provide the email address in the response. Why ? Nobody knows.
+ *
  * Created by Lucian CONDESCU
  */
 public class YahooProvider extends Provider {

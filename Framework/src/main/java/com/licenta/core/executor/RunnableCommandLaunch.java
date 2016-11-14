@@ -8,9 +8,9 @@ import java.util.Map;
 /**
  * @author Lucian CONDESCU
  */
-public class RunnableCommandLaunch implements Runnable{
+public class RunnableCommandLaunch implements Runnable {
     private LaunchCommandPageUI commandPageUI;
-    private Map<String,String> parametersMap;
+    private Map<String, String> parametersMap;
     private UserBean user;
     private String workingDirectory;
 
@@ -24,14 +24,14 @@ public class RunnableCommandLaunch implements Runnable{
     @Override
     public void run() {
         System.out.println("Starting : " + commandPageUI);
-        this.commandPageUI.launchCommand(parametersMap, user,workingDirectory);
+        this.commandPageUI.launchCommand(parametersMap, user, workingDirectory);
     }
 
     public void cancel() {
         this.commandPageUI.cancel();
     }
 
-    public boolean belongTo(String userID) {
+    boolean belongTo(String userID) {
         return this.user.getId().equals(userID);
     }
 

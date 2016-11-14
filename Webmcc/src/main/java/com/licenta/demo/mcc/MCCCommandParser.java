@@ -14,7 +14,7 @@ import java.util.Map;
 public class MCCCommandParser implements CommandParser {
 
     @Override
-    public StringBuilder parseCommandResult(Process p, String workingDir, UserBean user, Map<String,String> parametersMap) {
+    public StringBuilder parseCommandResult(Process p,String workingDir, UserBean user, Map<String, String> parametersMap) {
         StringBuilder result = new StringBuilder();
         String email = user.getEmail();
         String subject = "[MCC] Results are available";
