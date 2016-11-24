@@ -3,7 +3,7 @@
 
 There are a lot of command line applications, for which, at some point we want to demonstrate theirs functionalities. The most easy 
 to used solution for the end user will be a web application. That's why we have developed a framework which can be used to migrate
-any type of command line application (written in any programming language) to a web applications. Examples of webified applications can be seen at http://www.loose.upt.ro/Webmcc/ and https://dbyaclick.cs.upt.ro/WebTedi/.
+any type of command line application (written in any programming language) to a web applications. Examples of applications webified with this tool can be seen at http://www.loose.upt.ro/Webmcc/ and https://dbyaclick.cs.upt.ro/WebTedi/.
 
 ## How Webifycator can be used ?
 
