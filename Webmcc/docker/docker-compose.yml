@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  web:
+    build: tomcat_mcc
+    container_name: webmcc_tomcat_mcc_container
+    ports:
+      - "8080:8080"
+    volumes: 
+      - /home/lcondescu/Development/Facultate/Webifycator/Webmcc/target:/opt/tomcat/webapps
+      - /home/lcondescu/mcc:/mcc
+  db:
+    build: database
+    container_name: webmcc_db_container
+    environment: 
+    - MYSQL_ROOT_PASSWORD=root
