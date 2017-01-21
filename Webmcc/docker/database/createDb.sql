@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS Webmcc.command (
   launchedCommand TEXT        NOT NULL,
   userID          VARCHAR(40) NOT NULL,
   commandName VARCHAR(100)    NOT NULL ,
+  standardOutput BLOB    NOT NULL ,
+  standardError BLOB    NOT NULL ,
   launchedDate DATETIME       NOT NULL ,
   PRIMARY KEY (commandID),
   FOREIGN KEY (userID) REFERENCES Webmcc.user (userID)

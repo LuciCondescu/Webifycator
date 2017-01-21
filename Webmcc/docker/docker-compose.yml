@@ -6,6 +6,7 @@ services:
     container_name: webmcc_tomcat_mcc_container
     ports:
       - "8080:8080"
+      - "8009:8009"
     volumes: 
       - /home/lcondescu/Development/Facultate/Webifycator/Webmcc/target:/opt/tomcat/webapps
       - /home/lcondescu/mcc:/mcc

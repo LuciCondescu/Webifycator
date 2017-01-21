@@ -1,1 +1,1 @@
-export "JAVA_OPTS=-Dhttp.proxySet=true -Dhttp.proxyHost=10.11.1.1 -Dhttp.proxyPort=3128 "
+export "JAVA_OPTS=-Dhttp.proxySet=true -Dhttp.proxyHost=10.11.1.1 -Dhttp.proxyPort=3128 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8009 "
