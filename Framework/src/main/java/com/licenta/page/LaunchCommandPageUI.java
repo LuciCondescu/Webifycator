@@ -38,7 +38,7 @@ public abstract class LaunchCommandPageUI {
         contentBuilder.append("<input type=\"hidden\" name=\"commandName\" value=\"").append(encodedCommandName).append("\">");
         contentBuilder.append("<input type=\"hidden\" name=\"CSRFtoken\" value=\"").append(csrfToken).append("\">");
         for (WebElement currentElement : elements) {
-            contentBuilder.append(currentElement.buildElement());
+            contentBuilder.append(currentElement.buildHtmlElement());
             contentBuilder.append("</br></br>\n");
         }
 

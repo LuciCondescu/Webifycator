@@ -25,11 +25,7 @@ public class TableInfo extends WebElement {
     }
 
     @Override
-    public StringBuilder buildElement() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("<div id = \"").append(this.toString()).append("\" class=\"form-group\">\n");
-        builder.append("<label class=\"control-label col-sm-2\">").append(this.name).append("</label>\n");
-        builder.append("<div class=\"col-sm-10\">\n");
+    public StringBuilder buildElement(StringBuilder builder) {
         builder.append("<table class=\"table table-bordered\">\n");
         builder.append("<thead>\n<tr>\n");
 
@@ -47,8 +43,6 @@ public class TableInfo extends WebElement {
         }
         builder.append("</tbody>\n</table>");
         if(this.description != null ) builder.append(description);
-        builder.append("</div>\n");
-        builder.append("</div>\n");
 
         return builder;
     }

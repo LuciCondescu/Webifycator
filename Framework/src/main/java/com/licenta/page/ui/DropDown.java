@@ -28,11 +28,7 @@ public class DropDown extends WebElement {
     }
 
     @Override
-    public StringBuilder buildElement() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("<div id = \"").append(this.toString()).append("\" class=\"form-group\">\n");
-        builder.append("<label class=\"control-label col-sm-2\">").append(this.name).append("</label>\n");
-        builder.append("<div class=\"col-sm-10\">\n");
+    public StringBuilder buildElement(StringBuilder builder) {
         builder.append("<select class=\"form-control\" name=\"").append(this.name).append("\">\n");
         if (options != null) {
             for (String option : options) {
@@ -41,8 +37,6 @@ public class DropDown extends WebElement {
         }
         builder.append("</select>\n");
         if(this.description != null) builder.append(description);
-        builder.append("</div>\n");
-        builder.append("</div>\n");
         return builder;
     }
 }

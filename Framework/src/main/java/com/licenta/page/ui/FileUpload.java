@@ -20,12 +20,8 @@ public class FileUpload extends WebElement {
         super(name, verifier, description);
     }
     @Override
-    public StringBuilder buildElement() {
-        StringBuilder builder = new StringBuilder();
+    public StringBuilder buildElement(StringBuilder builder) {
         String elementID = this.name.replace(" ","");
-        builder.append("<div id= \"").append(this.toString()).append("\" class=\"form-group\">\n");
-        builder.append("<label class=\"control-label col-sm-2\">").append(this.name).append("</label>\n");
-        builder.append("<div class=\"col-sm-10\">\n");
         builder.append("<div style=\"position:relative;\">\n");
         builder.append("<a class='btn btn-default'>");
         builder.append("Choose File...");
@@ -35,8 +31,6 @@ public class FileUpload extends WebElement {
         builder.append("<span class='label label-default' id=\"upload-file").append(elementID).append("\"></span>\n");
         builder.append("</div>");
         if(this.description != null) builder.append(description);
-        builder.append("</div>");
-        builder.append("</div>");
 
         return builder;
     }

@@ -18,11 +18,10 @@ public class CompositeWebElement extends WebElement {
     }
 
     @Override
-    public StringBuilder buildElement() {
-        StringBuilder builder = new StringBuilder();
+    public StringBuilder buildElement(StringBuilder builder) {
         builder.append("<h3>").append(this.name).append("</h3>");
         for (WebElement webElement : webElements) {
-            builder.append(webElement.buildElement()).append("\n");
+            builder.append(webElement.buildHtmlElement()).append("\n");
             builder.append("</br></br>");
         }
         builder.append("</br>");

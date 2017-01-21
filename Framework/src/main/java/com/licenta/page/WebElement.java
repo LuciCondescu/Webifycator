@@ -21,7 +21,18 @@ public abstract class WebElement {
         return this.verifier == null || this.verifier.verify(actualValue);
     }
     
-    public abstract StringBuilder buildElement();
+    public StringBuilder buildHtmlElement() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<div id = \"").append(this.toString()).append("\" class=\"form-group\">\n");
+        builder.append("<label class=\"control-label col-sm-2\">").append(this.name).append("</label>\n");
+        builder.append("<div class=\"col-sm-10\">\n");
+        this.buildElement(builder);
+        builder.append("</div>");
+        builder.append("</div>");
+        return builder;
+    }
+
+    protected abstract StringBuilder buildElement(StringBuilder builder);
 
     public String toString() {
         return this.name.toLowerCase().replace(" ","-");

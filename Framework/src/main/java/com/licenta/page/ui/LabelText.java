@@ -15,15 +15,8 @@ public class LabelText extends WebElement {
     }
 
     @Override
-    public StringBuilder buildElement() {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append("<div id = \"").append(this.toString()).append("\" class=\"form-group\">\n");
-        builder.append("<label class=\"control-label col-sm-2\">").append(this.name).append("</label>\n");
-        builder.append("<div class=\"col-sm-10\">\n");
+    public StringBuilder buildElement(StringBuilder builder) {
         builder.append("<span class=\"control-label label label-default\">").append(this.info).append("</span>\n");
-        builder.append("</div>\n");
-        builder.append("</div>\n");
 
         return builder;
     }

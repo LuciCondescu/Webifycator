@@ -20,16 +20,9 @@ public class InputText extends WebElement {
         super(name,verifier,description);
     }
     @Override
-    public StringBuilder buildElement() {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append("<div id = \"").append(this.toString()).append("\" class=\"form-group\">\n");
-        builder.append("<label class=\"control-label col-sm-2\">").append(this.name).append("</label>\n");
-        builder.append("<div class=\"col-sm-10\">\n");
+    public StringBuilder buildElement(StringBuilder builder) {
         builder.append("<input type=\"text\" class=\"form-control\" name=\"").append(this.name).append("\" placeholder=\"Enter ").append(this.name).append(" here...\">\n");
         if(this.description != null ) builder.append(description);
-        builder.append("</div>\n");
-        builder.append("</div>\n");
         return builder;
     }
 }
