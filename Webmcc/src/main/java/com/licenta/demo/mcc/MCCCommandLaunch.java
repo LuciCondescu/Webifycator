@@ -2,6 +2,7 @@ package com.licenta.demo.mcc;
 
 import com.licenta.core.CommandLaunch;
 import com.licenta.core.CommandParser;
+import com.licenta.core.PropertiesManager;
 import com.licenta.utils.UnzipUtil;
 import org.apache.commons.io.FileUtils;
 
@@ -14,9 +15,9 @@ import java.util.Map;
  */
 public class MCCCommandLaunch extends CommandLaunch {
 
-    private static final String MCC_ROOT = "/home/lcondescu/tools/iplasma/iPlasma6/tools/mcc/";
+    private static final String MCC_ROOT = PropertiesManager.INSTANCE.getProperty("MCC_HOME");
     private static final String CONF_FILES = MCC_ROOT + "env_c/";
-    private static final String MCC_EXE = MCC_ROOT + "mcC.exe";
+    private static final String MCC_EXE = MCC_ROOT + "/mcC.exe";
 
     public MCCCommandLaunch(CommandParser parser) {
         super(parser);

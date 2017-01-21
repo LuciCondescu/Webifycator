@@ -1,8 +1,8 @@
 package com.licenta.filters;
 
+import com.licenta.core.PropertiesManager;
 import com.licenta.core.executor.QueuedCommandExecutor;
 import com.licenta.core.executor.RefuseCommandExecutor;
-import com.licenta.exceptions.ConfigurationException;
 import com.licenta.page.CommandPageFactory;
 import com.licenta.utils.SendMail;
 import org.apache.commons.lang.StringUtils;
@@ -10,9 +10,6 @@ import org.apache.commons.lang.StringUtils;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 /**
  * @author Lucian CONDESCU
@@ -23,18 +20,7 @@ public class ServletContext implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        Properties properties = new Properties();
-        final javax.servlet.ServletContext application = servletContextEvent.getServletContext();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("config/appConfig.xml");
-        try {
-            properties.loadFromXML(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new ConfigurationException("Configuration file appConfig.xml couldn't be read",e);
-        } finally {
-            if(inputStream!=null)
-                try {inputStream.close();} catch (IOException e) {e.printStackTrace();}
-        }
+        PropertiesManager properties = PropertiesManager.INSTANCE;
 
         String applicationName = properties.getProperty("APPLICATION_NAME");
         String[] ssoProviders = properties.getProperty("SSO_PROVIDERS").split(",");
@@ -45,6 +31,8 @@ public class ServletContext implements ServletContextListener {
 
         initializeCommandExecution(properties);
 
+        javax.servlet.ServletContext application = servletContextEvent.getServletContext();
+
         application.setAttribute("executor",executor);
         application.setAttribute("name",applicationName);
         application.setAttribute("providers",ssoProviders);
@@ -53,7 +41,7 @@ public class ServletContext implements ServletContextListener {
         instantiateFactory(servletContextEvent, factoryClass);
     }
 
-    private void initializeCommandExecution(Properties properties) {
+    private void initializeCommandExecution(PropertiesManager properties) {
         int maxRunningCommands = Integer.valueOf(properties.getProperty("MAX_COMMANDS"));
         String userCommands = properties.getProperty("MAX_USER_COMMANDS");
         String executionStrategy = properties.getProperty("EXECUTION_STRATEGY");
@@ -70,7 +58,7 @@ public class ServletContext implements ServletContextListener {
             executor = new QueuedCommandExecutor(maxRunningCommands);
     }
 
-    private void initializeSendMail(Properties properties) {
+    private void initializeSendMail(PropertiesManager properties) {
         String smtpHost = properties.getProperty("SMTP_HOST");
         String smtpPort = properties.getProperty("SMTP_PORT");
         String username = properties.getProperty("MAIL_USERNAME");

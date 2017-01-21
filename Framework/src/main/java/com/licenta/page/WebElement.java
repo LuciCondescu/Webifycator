@@ -20,7 +20,7 @@ public abstract class WebElement {
         final String actualValue = parametersMap.get(this.name);
         return this.verifier == null || this.verifier.verify(actualValue);
     }
-
+    
     public abstract StringBuilder buildElement();
 
     public String toString() {
