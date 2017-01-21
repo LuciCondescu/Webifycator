@@ -22,21 +22,13 @@ public class MCCCommandPageUI extends LaunchCommandPageUI {
 
     @Override
     public void buildPageUI() {
-        Verifier zipVerifier = new Verifier() {
-            @Override
-            public boolean verify(String parameter) {
-                return new UnzipUtil().isZipFile(parameter);
-            }
-        };
+        Verifier zipVerifier = parameter -> new UnzipUtil().isZipFile(parameter);
         WebElement sourcesZip = new FileUpload("Sources",zipVerifier,"A zip archive containing the C++ source code");
+
         final List<String> options = Arrays.asList("N/A","Aix","Alpha","Borland_30","Borland_50","C++","full_parser","Gnu_27","Hp","Ilog_30","MFC","Microsoft_15","Microsoft_20","Microsoft_50","Microsoft_60","Objectstore_5x","Orbix_2x","Sun");
-        Verifier optionVerifier = new Verifier() {
-            @Override
-            public boolean verify(String parameter) {
-                return options.contains(parameter);
-            }
-        };
+        Verifier optionVerifier = options::contains;
         WebElement configurationFile = new DropDown("Configuration type",optionVerifier,options);
+
         super.addWebElement(sourcesZip);
         super.addWebElement(configurationFile);
     }

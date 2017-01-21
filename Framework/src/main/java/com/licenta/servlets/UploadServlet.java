@@ -39,7 +39,7 @@ public class UploadServlet extends HttpServlet {
         // gets absolute path of the web application
         String appPath = request.getServletContext().getRealPath("");
         // constructs path of the directory to save uploaded file
-        String tempDirectoryName = TempGenerator.getInstance().nextTemp();
+        String tempDirectoryName = TempGenerator.INSTANCE.nextTemp();
         final String workspace = appPath + File.separator + SAVE_DIR + File.separator;
         String tempDirectoryPath = workspace + tempDirectoryName;
 

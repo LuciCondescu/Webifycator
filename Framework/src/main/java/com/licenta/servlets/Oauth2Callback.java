@@ -60,7 +60,7 @@ public class Oauth2Callback extends HttpServlet {
             session.setAttribute("loggedUser", loggedInUser);
             if (!userDAO.checkUser(loggedInUser.getId()))
                 userDAO.addUser(loggedInUser);
-            session.setAttribute("CSRFToken", TempGenerator.getInstance().nextTemp());
+            session.setAttribute("CSRFToken", TempGenerator.INSTANCE.nextTemp());
             response.sendRedirect(request.getContextPath() + "/protected/homePage.jsp");
         } else {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
